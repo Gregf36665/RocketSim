@@ -4,8 +4,9 @@ import java.awt.*;
 
 public class ControlPanel extends Panel 
 
-{  Label DL,ML,CdL,ImL,ThL,DlL,ChL,StatusL,TmL,AltL,VelL,AccL; 
-   TextField DT,MT,CdT,ImT,ThT,DlT,ChT,TmT,AltT,VelT,AccT; 
+{  Label DL,ML,CdRL,CdCL,ImL,ThL,DlL,ChL,StatusL,TmL,AltL,VelL,AccL; 
+  Label EmptyR,EmptyL;
+   TextField DT,MT,CdRT,CdCT,ImT,ThT,DlT,ChT,TmT,AltT,VelT,AccT; 
    Button LaunchB; 
    boolean prepped, launched; 
    Launcher L; 
@@ -14,18 +15,22 @@ public class ControlPanel extends Panel
 
    {  L = parent; 
 
-      setLayout(new GridLayout(6,4,5,10));
+      setLayout(new GridLayout(7,4,5,10));
 
       DL = new Label("Diam (mm)", Label.RIGHT); 
       ML = new Label("Empty Mass (g)", Label.RIGHT); 
-      CdL = new Label("Drag Coef", Label.RIGHT); 
+      CdRL = new Label("Drag Coef Rocket", Label.RIGHT);
+      CdCL = new Label("Drag Coef Chute", Label.RIGHT); 
       ImL = new Label("Impulse (N-s)", Label.RIGHT); 
       ThL = new Label("Thrust (N)", Label.RIGHT); 
       DlL = new Label("Chute Delay (s)", Label.RIGHT); 
-      ChL = new Label("Chute Diam (mm)", Label.RIGHT); 
+      ChL = new Label("Chute diameter (mm)", Label.RIGHT); 
+      EmptyR = new Label("",Label.RIGHT);
+      EmptyL = new Label("", Label.LEFT);
       DT = new TextField(10); 
       MT = new TextField(10); 
-      CdT = new TextField(10); 
+      CdRT = new TextField(10); 
+      CdCT = new TextField(10);
       ImT = new TextField(10); 
       ThT = new TextField(10); 
       DlT = new TextField(10); 
@@ -35,8 +40,10 @@ public class ControlPanel extends Panel
       add(DT); 
       add(ML); 
       add(MT); 
-      add(CdL); 
-      add(CdT); 
+      add(CdRL);
+      add(CdRT);
+      add(CdCL);
+      add(CdCT); 
       add(ImL); 
       add(ImT); 
       add(ThL);
@@ -45,6 +52,8 @@ public class ControlPanel extends Panel
       add(DlT); 
       add(ChL); 
       add(ChT); 
+      add(EmptyR);
+      add(EmptyL);
 
       StatusL = new Label("Enter Values", Label.CENTER); 
       StatusL.setBackground(Color.red); 
@@ -125,7 +134,8 @@ public class ControlPanel extends Panel
 
       p  = DT.getText().length() > 0; 
       p &= MT.getText().length() > 0; 
-      p &= CdT.getText().length() > 0; 
+      p &= CdRT.getText().length() > 0;
+      p &= CdCT.getText().length() > 0;
       p &= ImT.getText().length() > 0; 
       p &= ThT.getText().length() > 0; 
       p &= DlT.getText().length() > 0; 
